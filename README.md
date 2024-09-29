@@ -1,5 +1,11 @@
 # SkillsTestApp Application
-# App is still implementing and not finished.
+## Important Notice
+- This app is still being implemented.
+- This app requires the following API KEY list.
+
+  - GoogleMap
+  - Gemini AI
+
 ## Introduce app
 This app contains sample codes that implement various useful functions and libraries that can be used in Android apps.
 
