@@ -37,13 +37,13 @@ import com.google.maps.android.compose.clustering.Clustering
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.jdw.skillstestapp.components.LineWithSpacer
 import com.jdw.skillstestapp.data.model.UserImg
-import com.jdw.skillstestapp.screens.viewmodel.MainViewModel
+import com.jdw.skillstestapp.screens.viewmodel.GoogleMapScreenViewModel
 
 
 @Composable
 fun GoogleMapsScreen(
     navController: NavController,
-    viewModel: MainViewModel,
+    viewModel: GoogleMapScreenViewModel,
     paddingValues: PaddingValues
 ) {
     Surface(
@@ -57,7 +57,7 @@ fun GoogleMapsScreen(
 
 @OptIn(MapsComposeExperimentalApi::class)
 @Composable
-fun DisplayGoogleMap(viewModel: MainViewModel) {
+fun DisplayGoogleMap(viewModel: GoogleMapScreenViewModel) {
     val incheonAirport = LatLng(37.461400, 126.452702)
     val imgList = viewModel.userImages.collectAsState().value
     val cameraPositionState = rememberCameraPositionState {
@@ -78,12 +78,14 @@ fun DisplayGoogleMap(viewModel: MainViewModel) {
                 BottomBarState.EmptyState -> {
                     bottomBarVisible = false
                 }
+
                 BottomBarState.ImageListState -> {
                     BottomBarImageListView(selectedCluster) { clickedItem ->
                         Log.d("GoogleMapsScreen", "image clicked! $clickedItem")
                         bottomBarVisible = false
                     }
                 }
+
                 BottomBarState.ImageItemState -> {
                     BottomBarImageContent(clusterItem = selectedClusterItem)
                 }
@@ -95,9 +97,15 @@ fun DisplayGoogleMap(viewModel: MainViewModel) {
                 cameraPositionState = cameraPositionState,
                 onMapLoaded = {
                     // change map init position
-                    val latestImage = imgList.firstOrNull() ?: UserImg(imageLat = 37.461400, imageLong = 126.452702)
+                    val latestImage = imgList.firstOrNull() ?: UserImg(
+                        imageLat = 37.461400,
+                        imageLong = 126.452702
+                    )
                     cameraPositionState.position = CameraPosition.fromLatLngZoom(
-                        LatLng(latestImage.imageLat!!.toDouble(), latestImage.imageLong!!.toDouble()), 10f
+                        LatLng(
+                            latestImage.imageLat!!.toDouble(),
+                            latestImage.imageLong!!.toDouble()
+                        ), 10f
                     )
                     // update db with new images
                     viewModel.fetchImagesToDb()

@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jdw.skillstestapp.components.LineWithSpacer
 import com.jdw.skillstestapp.data.model.ChatMessage
-import com.jdw.skillstestapp.screens.viewmodel.MainViewModel
+import com.jdw.skillstestapp.screens.viewmodel.GeminiChatRoomViewModel
 import com.jdw.skillstestapp.utils.convertTimeStampToDate
 import com.jdw.skillstestapp.utils.getTimeStamp
 
@@ -44,7 +44,7 @@ import com.jdw.skillstestapp.utils.getTimeStamp
 @Composable
 fun GeminiCharRoomScreen(
     navController: NavController,
-    viewModel: MainViewModel,
+    viewModel: GeminiChatRoomViewModel,
     paddingValues: PaddingValues
 ) {
     Surface(
@@ -78,7 +78,7 @@ fun GeminiCharRoomScreen(
 
 @Composable
 fun ChatScreen(
-    viewModel: MainViewModel,
+    viewModel: GeminiChatRoomViewModel,
     messages: List<ChatMessage>,
     onSendMessage: (ChatMessage) -> Unit
 ) {
@@ -160,7 +160,8 @@ fun ChatMessageItem(
         message = "hi. there",
         sender = "Gemini",
         timestamp = 1000000L
-    )) {
+    )
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth(),

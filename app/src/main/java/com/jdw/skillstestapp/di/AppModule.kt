@@ -5,6 +5,8 @@ import android.content.ContentResolver
 import android.content.Context
 import androidx.room.Room
 import com.google.ai.client.generativeai.GenerativeModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jdw.skillstestapp.BuildConfig
 import com.jdw.skillstestapp.data.AppDatabase
 import com.jdw.skillstestapp.data.ChatMessageDao
@@ -21,8 +23,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-
     @Provides
     @Singleton
     fun provideContentResolver(@ApplicationContext context: Context): ContentResolver {
@@ -65,6 +65,18 @@ object AppModule {
     @Singleton
     fun provideGenerativeModel(): GenerativeModel {
         return GenerativeModel(modelName = "gemini-1.5-flash", apiKey = BuildConfig.GEMINI_API_KEY)
+    }
+
+    @Provides
+    @Singleton
+    fun getFirebaseAuthInstance(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
+    }
+
+    @Provides
+    @Singleton
+    fun getFirebaseFireStoreInstance(): FirebaseFirestore {
+        return FirebaseFirestore.getInstance()
     }
 
 //    val generativeModel = GenerativeModel(
