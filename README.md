@@ -21,6 +21,9 @@ This app contains sample codes that implement various useful functions and libra
 <img src="./screenshots/Firebase_2.png" alt="Sample Image" style="width:30%; height:auto;">
 <img src="./screenshots/Firebase_3.png" alt="Sample Image" style="width:30%; height:auto;">
 
+#### Open Weather API test
+<img src="./screenshots/OpenWeatherApi.png" alt="Sample Image" style="width:30%; height:auto;">
+
 ## Purpose
 - Created an app with the purpose of to implement various useful functions and libraries that can be used in Android apps.
 - Created an app with latest code and library based on Jetpack Compose 
