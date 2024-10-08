@@ -5,6 +5,7 @@
 
   - GoogleMap
   - Gemini AI
+  - Open Weather App
 
 ## Introduce app
 This app contains sample codes that implement various useful functions and libraries that can be used in Android apps.
@@ -21,7 +22,7 @@ This app contains sample codes that implement various useful functions and libra
 <img src="./screenshots/Firebase_2.png" alt="Sample Image" style="width:30%; height:auto;">
 <img src="./screenshots/Firebase_3.png" alt="Sample Image" style="width:30%; height:auto;">
 
-#### Open Weather API test
+#### Open Weather API test(Retrofit)
 <img src="./screenshots/OpenWeatherApi.png" alt="Sample Image" style="width:30%; height:auto;">
 
 ## Purpose
@@ -33,4 +34,4 @@ This app contains sample codes that implement various useful functions and libra
 - Dagger-Hilt
 - Kotlin Coroutines
 - MVVM architecture
-- useful feature and libraries (GoogleMap, Gemini AI, Room database, Coil...)
+- useful feature and libraries (GoogleMap, Gemini AI, Room database, Coil, Retrofit...)
