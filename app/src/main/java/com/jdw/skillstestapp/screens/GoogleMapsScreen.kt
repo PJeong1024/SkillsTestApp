@@ -119,7 +119,7 @@ fun DisplayGoogleMap(viewModel: GoogleMapScreenViewModel) {
                     items = imgList,
                     // Optional: Handle clicks on clusters, cluster items, and cluster item info windows
                     onClusterClick = { cluster ->
-                        selectedCluster = cluster.items.map { it }
+                        selectedCluster = cluster.items.sortedByDescending { it.imageDateTaken }
                         bottomBarState = BottomBarState.ImageListState
                         false
                     },
@@ -184,7 +184,7 @@ fun BottomBarImageListView(selectedCluster: List<UserImg>, listClicked: (String)
                     Spacer(modifier = Modifier.padding(5.dp))
                     Text(text = userImg.imageDisplayName)
                 }
-                LineWithSpacer()
+                LineWithSpacer(2.dp)
             }
         }
     }

@@ -34,8 +34,16 @@ class GoogleMapScreenViewModel @Inject constructor(
 
     fun getAllImages() {
         viewModelScope.launch(Dispatchers.IO) {
+            appRepository.getAllImages().forEach { userImage ->
+                if (!appRepository.imageIsExist(userImage.imageDataPath)) {
+                    appRepository.deleteUserImage(userImage)
+                }
+            }
+
             _userImages.value =
-                appRepository.getAllImages().sortedByDescending { it.imageDateTaken }
+                appRepository.getAllImages().sortedByDescending { userImg ->
+                    userImg.imageDateTaken
+                }
         }
     }
 }

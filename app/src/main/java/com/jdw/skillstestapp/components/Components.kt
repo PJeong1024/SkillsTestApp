@@ -226,7 +226,7 @@ fun ImageComponent(imageUrl: String, imageLoader: ImageLoader, contentDescriptio
 }
 
 @Composable
-fun LineWithSpacer() {
+fun LineWithSpacer(lineHeight : Dp) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -234,7 +234,7 @@ fun LineWithSpacer() {
         Spacer(modifier = Modifier.height(5.dp)) // Space above the line
         Spacer(
             modifier = Modifier
-                .height(2.dp) // Thickness of the line
+                .height(lineHeight) // Thickness of the line
                 .fillMaxWidth() // Takes full width
                 .background(Color.Black) // Color of the line
         )

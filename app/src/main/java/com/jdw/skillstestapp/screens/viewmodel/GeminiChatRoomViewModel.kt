@@ -21,11 +21,22 @@ class GeminiChatRoomViewModel @Inject constructor(
 ) : ViewModel() {
     private val _chatMessage: MutableStateFlow<List<ChatMessage>> = MutableStateFlow(emptyList())
     val chatMessage: StateFlow<List<ChatMessage>> = _chatMessage.asStateFlow()
+
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading
 
     init {
         getAllMessage()
+
+        if (chatMessage.value.isEmpty()) {
+            insertMessage(
+                ChatMessage(
+                    sender = "Gemini",
+                    message = "Hi. Ask any question you have.",
+                    timestamp = getTimeStamp()
+                )
+            )
+        }
     }
 
     // for chatMessage

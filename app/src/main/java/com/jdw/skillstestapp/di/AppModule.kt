@@ -11,12 +11,16 @@ import com.jdw.skillstestapp.BuildConfig
 import com.jdw.skillstestapp.data.AppDatabase
 import com.jdw.skillstestapp.data.ChatMessageDao
 import com.jdw.skillstestapp.data.UserImgDao
+import com.jdw.skillstestapp.data.network.WeatherApi
 import com.jdw.skillstestapp.repository.MyAppRepository
+import com.jdw.skillstestapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
@@ -34,9 +38,10 @@ object AppModule {
     fun provideMyAppRepository(
         contentResolver: ContentResolver,   // Inject ContentResolver here
         userImgDao: UserImgDao,
-        chatMessageDao: ChatMessageDao
+        chatMessageDao: ChatMessageDao,
+        weatherApi: WeatherApi
     ): MyAppRepository {
-        return MyAppRepository(contentResolver, userImgDao, chatMessageDao)
+        return MyAppRepository(contentResolver, userImgDao, chatMessageDao, weatherApi)
     }
 
     @Provides
@@ -79,30 +84,13 @@ object AppModule {
         return FirebaseFirestore.getInstance()
     }
 
-//    val generativeModel = GenerativeModel(
-//        modelName = "gemini-pro",
-//        apiKey = BuildConfig.GEMINI_API_KEY
-//    )
-
-//    @Singleton
-//    @Provides
-//    fun provideRecipeDao(recipeDatabase: RecipeDatabase): RecipeDao = recipeDatabase.recipeDao()
-//
-//    @Singleton
-//    @Provides
-//    fun provideRecipeDatabase(@ApplicationContext context: Context): RecipeDatabase =
-//        Room.databaseBuilder(context, RecipeDatabase::class.java, "recipe_db")
-//            .fallbackToDestructiveMigration().build()
-
-//
-//    @Singleton
-//    @Provides
-//    fun provideGeminiApiGenerativeModel(): GenerativeModel {
-//        return GenerativeModel(
-//            modelName = "gemini-pro",
-//            apiKey = BuildConfig.GEMINI_API_KEY
-//        )
-//    }
+    @Provides
+    @Singleton
+    fun provideOpenWeatherApi(): WeatherApi {
+        return Retrofit.Builder().baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create()).build()
+            .create(WeatherApi::class.java)
+    }
 
 //    @Singleton
 //    @Provides

@@ -54,16 +54,6 @@ fun GeminiCharRoomScreen(
     ) {
         val chatMessage = viewModel.chatMessage.collectAsState()
 
-        if (chatMessage.value.isEmpty()) {
-            viewModel.insertMessage(
-                ChatMessage(
-                    sender = "Gemini",
-                    message = "Hi. Ask any question you have.",
-                    timestamp = getTimeStamp()
-                )
-            )
-        }
-
         ChatScreen(
             viewModel = viewModel,
             messages = chatMessage.value,
@@ -114,7 +104,7 @@ fun ChatScreen(
             }
         }
 
-        LineWithSpacer()
+        LineWithSpacer(2.dp)
 
         Row(
             modifier = Modifier

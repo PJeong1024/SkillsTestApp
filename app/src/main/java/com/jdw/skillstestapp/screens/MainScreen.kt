@@ -39,7 +39,7 @@ import com.jdw.skillstestapp.utils.Constants
 fun MainScreen(
     navController: NavController = NavController(LocalContext.current),
 ) {
-    val currentScreen = remember { mutableStateOf(BottomNaviBarScreen.FirebaseAuthScreen) }
+    val currentScreen = remember { mutableStateOf(BottomNaviBarScreen.WeatherApiScreen) }
 
     Scaffold(
         topBar = {
@@ -151,7 +151,7 @@ fun CurrentScreen(
             paddingValues = paddingValues
         )
 
-        BottomNaviBarScreen.FourthScreen -> FourthScreen(
+        BottomNaviBarScreen.WeatherApiScreen -> WeatherApiScreen(
             navController = navController,
             viewModel = hiltViewModel(),
             paddingValues = paddingValues

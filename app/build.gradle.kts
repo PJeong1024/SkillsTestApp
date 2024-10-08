@@ -39,6 +39,11 @@ android {
             "GEMINI_API_KEY",
             "\"${properties.getProperty("GEMINI_API_KEY")}\""
         )
+        buildConfigField(
+            "String",
+            "OPEN_WEATHER_API_KEY",
+            "\"${properties.getProperty("OPEN_WEATHER_API_KEY")}\""
+        )
 
         manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = properties.getProperty("MAPS_API_KEY")
     }
@@ -89,6 +94,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.exifinterface)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -137,5 +143,12 @@ dependencies {
     // firebase auth
     implementation (libs.firebase.auth.ktx)
     implementation(platform(libs.firebase.bom))
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // OKHttp
+    implementation(libs.okhttp)
 
 }

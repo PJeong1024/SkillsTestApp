@@ -12,14 +12,16 @@ object Constants {
         BottomNaviBarScreen.GoogleMaps,
         BottomNaviBarScreen.GeminiCharRoom,
         BottomNaviBarScreen.FirebaseAuthScreen,
-        BottomNaviBarScreen.FourthScreen,
+        BottomNaviBarScreen.WeatherApiScreen,
     )
 
+    const val BASE_URL = "https://api.openweathermap.org/"
 }
 
 enum class BottomNaviBarScreen(val label: String, val icon: ImageVector, val route: String) {
     GoogleMaps("Google Maps", Icons.Filled.Map, "googleMaps"),
     GeminiCharRoom("Chat with Gemini", Icons.AutoMirrored.Filled.Message, "geminiChatRoom"),
     FirebaseAuthScreen("Firebase Auth", Icons.AutoMirrored.Filled.Login, "firebaseAuthScreen"),
-    FourthScreen("FourthScreen", Icons.Filled.Menu, "fourthScreen"),
+    WeatherApiScreen("Weather Api Screen", Icons.Filled.Menu, "weatherApiScreen"),
 }
+
